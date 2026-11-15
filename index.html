@@ -110,15 +110,15 @@
       <div class="page-box">
         <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
         <h1 style="font-size:2rem;margin-bottom:8px;">Duzgo Soft Support Center</h1>
-        <p>Submit a support ticket for any Duzgo Soft product, subscription, billing question, or custom software inquiry under Duzgo OÜ.</p>
+        <p>Submit a support ticket for any Duzgo Soft product, subscription, billing question, or custom software inquiry.</p>
 
-        <form id="support-form" onsubmit="submitSupport(event)">
+        <form id="support-form" onsubmit="submitSupport(event)"><input type="text" id="sup-trap" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="field">
             <label for="sup-name">Your Name</label>
             <input type="text" id="sup-name" placeholder="Full Name" required />
           </div>
           <div class="field">
-            <label for="sup-email">Your Email Address</label>
+            <label for="sup-email">Your Email Address <span style="color:#b91c1c;font-weight:600;font-size:0.82rem;">(Required — valid email needed for ticket reply)</span></label>
             <input type="email" id="sup-email" placeholder="you@company.com" required />
           </div>
           <div class="field">
@@ -235,33 +235,39 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
       if (history.replaceState) history.replaceState(null, "", name === "home" ? "/" : "#" + name);
     }
+    function cleanInput(str) {
+      return str.replace(/<[^>]*>?/gm, "").replace(/[<>]/g, "").trim();
+    }
+    function isValidEmail(email) {
+      return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    }
     function submitSupport(e) {
       e.preventDefault();
+      if (document.getElementById("sup-trap").value !== "") return;
       var btn = document.getElementById("sup-btn");
       var box = document.getElementById("ticket-result");
-      var name = document.getElementById("sup-name").value.trim();
-      var email = document.getElementById("sup-email").value.trim();
-      var product = document.getElementById("sup-product").value;
-      var msg = document.getElementById("sup-message").value.trim();
+      var name = cleanInput(document.getElementById("sup-name").value);
+      var email = cleanInput(document.getElementById("sup-email").value).toLowerCase();
+      var product = cleanInput(document.getElementById("sup-product").value);
+      var msg = cleanInput(document.getElementById("sup-message").value);
+      if (!name || !isValidEmail(email) || msg.length < 5) {
+        box.style.display = "block";
+        box.innerHTML = "<strong style='color:#b91c1c;'>Please enter a valid email address and message before submitting.</strong>";
+        return;
+      }
       var ticketId = "DZG-" + Math.floor(100000 + Math.random() * 900000);
-      var summary = "Ticket ID: " + ticketId + "\nName: " + name + "\nEmail: " + email + "\nProduct: " + product + "\nMessage: " + msg;
       btn.disabled = true;
       btn.textContent = "Submitting Ticket...";
-      var endpoint = "https" + "://" + "formsubmit.co/ajax/support" + "@" + "duzgosoft.com";
+      var endpoint = "https" + "://" + "formsubmit.co/ajax/duzgo.estonia@gmail.com";
       fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ ticket_id: ticketId, name: name, email: email, product: product, message: msg })
+        body: JSON.stringify({ _subject: "[" + ticketId + "] " + product, _replyto: email, ticket_id: ticketId, name: name, email: email, product: product, message: msg })
       }).catch(function () { return null; }).finally(function () {
         btn.disabled = false;
         btn.textContent = "Submit Support Ticket →";
         box.style.display = "block";
-        box.innerHTML = "<strong>✔ Support Ticket Created (" + ticketId + ")</strong><p style='margin-top:6px;color:#0f172a;'>Your ticket for <strong>" + product + "</strong> has been logged. Our Duzgo OÜ support team will reply to <strong>" + email + "</strong>.</p><button type='button' class='btn btn-sm' id='copy-ticket-btn'>Copy Ticket Details</button><a class='btn btn-sm' id='mail-ticket-btn' href='#'>Open in Email App</a>";
-        document.getElementById("copy-ticket-btn").onclick = function () {
-          navigator.clipboard.writeText(summary);
-          this.textContent = "Copied!";
-        };
-        document.getElementById("mail-ticket-btn").href = "mailto:support" + "@" + "://duzgosoft.com" + encodeURIComponent("[" + ticketId + "] " + product) + "&body=" + encodeURIComponent(summary);
+        box.innerHTML = "<strong>✔ Ticket Number: " + ticketId + "</strong>";
         document.getElementById("support-form").reset();
       });
     }
