@@ -3,57 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Duzgo Soft — Encrypted, Zero-Retention Software &amp; Business Suites</title>
-  <meta name="description" content="Duzgo Soft builds encrypted, zero-retention web utilities and business software suites including Duzgo Utility Tools Hub and Duzgo Suites." />
+  <title>Duzgo Soft — Software Built Around Your Needs — Free &amp; Paid</title>
+  <meta name="description" content="Welcome to Duzgo Soft, a project of Duzgo OÜ (Estonia). We develop practical web utilities and full-featured business software tailored to everyday workflows." />
   <link rel="canonical" href="https://duzgosoft.com" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      { "@type": "Organization", "@id": "https://duzgosoft.com#organization", "name": "Duzgo Soft", "parentOrganization": { "@type": "Organization", "name": "Duzgo OÜ", "address": { "@type": "PostalAddress", "addressCountry": "EE" } }, "url": "https://duzgosoft.com", "sameAs": ["https://tools.duzgosoft.com/", "https://suites.duzgosoft.com/"] },
-      { "@type": "SoftwareApplication", "name": "Duzgo Utility Tools Hub", "url": "https://duzgosoft.com", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
-      { "@type": "SoftwareApplication", "name": "Duzgo Suites", "url": "https://duzgosoft.com", "applicationCategory": "BusinessApplication", "operatingSystem": "Web" }
-    ]
-  }
-  </script>
   <style>
-    :root { --bg: #070b14; --card: #0f172a; --border: #1e293b; --text: #f8fafc; --muted: #94a3b8; --accent: #3b82f6; --accent-hover: #2563eb; --green: #10b981; --amber: #f59e0b; }
+    :root { --bg: #ffffff; --card: #f8fafc; --border: #e2e8f0; --text: #0f172a; --muted: #334155; --green: #065f46; --green-hover: #047857; --green-soft: #ecfdf5; --amber: #b45309; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-    header { border-bottom: 1px solid var(--border); padding: 18px 0; background: rgba(7, 11, 20, 0.9); position: sticky; top: 0; z-index: 10; }
+    header { border-bottom: 1px solid var(--border); padding: 18px 0; background: #ffffff; position: sticky; top: 0; z-index: 10; }
     .nav { display: flex; justify-content: space-between; align-items: center; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; background: none; border: none; color: var(--text); font-weight: 700; font-size: 1.15rem; cursor: pointer; text-decoration: none; }
-    .brand-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); display: grid; place-items: center; font-weight: 800; color: #fff; }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
-    .nav-btn { background: none; border: none; color: var(--muted); font-size: 0.92rem; font-weight: 500; cursor: pointer; text-decoration: none; }
-    .nav-btn:hover, .nav-btn.active { color: var(--text); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; background: none; border: none; color: var(--text); font-weight: 800; font-size: 1.15rem; cursor: pointer; text-decoration: none; }
+    .brand-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--green); display: grid; place-items: center; font-weight: 800; color: #ffffff; }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-btn { background: none; border: none; color: var(--muted); font-size: 0.94rem; font-weight: 600; cursor: pointer; text-decoration: none; }
+    .nav-btn:hover, .nav-btn.active { color: var(--green); }
     .view { display: none; padding: 64px 0 80px; }
     .view.active { display: block; }
     .hero { text-align: center; margin-bottom: 52px; }
-    .pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; margin-bottom: 20px; }
-    h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); border: 1px solid #a7f3d0; color: var(--green); padding: 6px 14px; border-radius: 999px; font-size: 0.84rem; font-weight: 700; margin-bottom: 20px; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; color: var(--text); }
     .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s, transform 0.2s; }
-    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.78rem; font-weight: 600; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; }
+    .card:hover { border-color: var(--green); }
+    .badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.78rem; font-weight: 700; }
     .live { color: var(--green); }
     .soon { color: var(--amber); }
-    .tag { color: var(--muted); background: rgba(148, 163, 184, 0.1); padding: 3px 10px; border-radius: 999px; }
-    .card h2 { font-size: 1.35rem; margin-bottom: 10px; }
-    .card p { color: var(--muted); font-size: 0.94rem; margin-bottom: 18px; }
-    .checklist { list-style: none; margin-bottom: 24px; display: grid; gap: 8px; font-size: 0.9rem; color: #cbd5e1; }
-    .btn { display: inline-block; width: 100%; text-align: center; background: var(--accent); color: #fff; border: none; text-decoration: none; font-weight: 600; padding: 12px 18px; border-radius: 10px; font-size: 0.94rem; cursor: pointer; }
-    .btn:hover { background: var(--accent-hover); }
-    .btn.outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn.outline:hover { border-color: var(--muted); }
-    .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-bottom: 28px; }
-    .back-btn:hover { border-color: var(--accent); }
-    .detail-box { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
-    .detail-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
-    .detail-actions .btn { width: auto; padding: 12px 24px; }
-    footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: 0.86rem; }
+    .tag { color: var(--muted); background: #e2e8f0; padding: 3px 10px; border-radius: 999px; }
+    .card h2 { font-size: 1.35rem; margin-bottom: 10px; color: var(--text); }
+    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
+    .checklist { list-style: none; margin-bottom: 24px; display: grid; gap: 8px; font-size: 0.92rem; color: var(--text); }
+    .btn { display: inline-block; width: 100%; text-align: center; background: var(--green); color: #ffffff; border: none; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; }
+    .btn:hover { background: var(--green-hover); }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-bottom: 24px; }
+    .support-box { max-width: 680px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .field input, .field select, .field textarea { width: 100%; padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; background: #ffffff; color: var(--text); font-family: inherit; }
+    .notice { display: none; margin-top: 16px; padding: 14px; border-radius: 10px; background: var(--green-soft); border: 1px solid #a7f3d0; color: var(--green); font-weight: 600; font-size: 0.92rem; }
+    footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: 0.88rem; }
     .foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
   </style>
 </head>
@@ -65,15 +54,14 @@
       </button>
       <nav class="nav-links">
         <button type="button" id="nav-home" class="nav-btn active" onclick="showView('home')">Product Ecosystem</button>
-        <a href="https://tools.duzgosoft.com" class="nav-btn">Utility Tools Hub</a>
-        <a href="https://suites.duzgosoft.com" class="nav-btn">Duzgo Suites</a>
-        <a href="https://tools.duzgosoft.com/support" class="nav-btn">Support</a>
+        <a id="link-nav-tools" href="#" class="nav-btn">Utility Tools Hub</a>
+        <a id="link-nav-suites" href="#" class="nav-btn">Duzgo Suites</a>
+        <button type="button" id="nav-support" class="nav-btn" onclick="showView('support')">Support</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <!-- HOME VIEW -->
     <section id="view-home" class="view active">
       <div class="hero">
         <div class="pill">👋 Welcome to Duzgo Soft</div>
@@ -84,16 +72,16 @@
       <div class="grid">
         <article class="card">
           <div>
-            <div class="badge-row"><span class="live">● Online &amp; Live</span><span class="tag">74+ Active Tools</span></div>
+            <div class="badge-row"><span class="live">● Online &amp; Live</span><span class="tag">74+ Free Tools</span></div>
             <h2>Duzgo Utility Tools Hub</h2>
-            <p>All-in-one workspace for PDF editing, OCR, image conversion, developer formatters, SEO schema builders, and disposable email—with zero file retention.</p>
+            <p>All-in-one workspace for PDF editing, OCR, image conversion, developer formatters, SEO schema builders, and disposable email.</p>
             <ul class="checklist">
               <li>✔ PDF editors, Bates numbering, OCR &amp; merge/split tools</li>
               <li>✔ Developer workbench, regex &amp; JSON-LD schema generators</li>
               <li>✔ Batch image, audio &amp; spreadsheet conversion suites</li>
             </ul>
           </div>
-          <a href="https://tools.duzgosoft.com" class="btn">Launch Utility Tools Hub →</a>
+          <a id="link-card-tools" href="#" class="btn">Launch Utility Tools Hub →</a>
         </article>
 
         <article class="card">
@@ -107,72 +95,86 @@
               <li>⏳ Real-time financial reporting &amp; audit exports</li>
             </ul>
           </div>
-          <a href="https://suites.duzgosoft.com" class="btn outline">Open Duzgo Suites →</a>
+          <a id="link-card-suites" href="#" class="btn">Open Duzgo Suites →</a>
         </article>
       </div>
     </section>
+    <section id="view-support" class="view">
+      <div class="support-box">
+        <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+        <div class="pill">Duzgo Soft Support Center</div>
+        <h1 style="font-size:2rem;margin-bottom:10px;">How Can We Help You?</h1>
+        <p style="color:var(--muted);margin-bottom:24px;">Unified support for all Duzgo Soft products, subscriptions, billing inquiries, and custom software requests under Duzgo OÜ.</p>
 
-    <!-- DEDICATED PAGE 1: DUZGO UTILITY TOOLS HUB -->
-    <section id="view-tools" class="view">
-      <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-      <div class="detail-box">
-        <div class="badge-row"><span class="live">● Online &amp; Live at ://duzgosoft.com</span><span class="tag">74+ Free Tools</span></div>
-        <h1 style="font-size:2.1rem;margin-bottom:14px;">Duzgo Utility Tools Hub</h1>
-        <p style="color:var(--muted);max-width:740px;margin-bottom:24px;">A unified productivity workspace offering 74+ specialized tools across PDF manipulation, OCR, image &amp; media conversion, developer utilities, SEO/GEO schema generation, and 10-minute disposable email—with encrypted, zero-retention handling.</p>
-        <ul class="checklist">
-          <li>✔ <strong>PDF Power Suite:</strong> Merge, split, compress, OCR, electronic signatures, Bates numbering, grayscale ink-saver, and metadata stripper.</li>
-          <li>✔ <strong>Developer &amp; SEO Suite:</strong> JSON/YAML/JWT workbench, regex tester, SQL formatter, Google SERP previewer, and JSON-LD schema generator.</li>
-          <li>✔ <strong>Media, Security &amp; Edge Utilities:</strong> Batch image/HEIC converter, barcode scanner, URL shortener, and instant disposable inbox.</li>
-        </ul>
-        <div class="detail-actions">
-          <a href="https://tools.duzgosoft.com" class="btn">Launch Live Utility Tools Hub ↗</a>
-          <button type="button" class="btn outline" onclick="showView('home')">← Back to Home</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- DEDICATED PAGE 2: DUZGO SUITES -->
-    <section id="view-suites" class="view">
-      <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-      <div class="detail-box">
-        <div class="badge-row"><span class="soon">● Subdomain: ://duzgosoft.com</span><span class="tag">Subscription Accounting SaaS</span></div>
-        <h1 style="font-size:2.1rem;margin-bottom:14px;">Duzgo Suites — Accounting, Bookkeeping &amp; Invoicing</h1>
-        <p style="color:var(--muted);max-width:740px;margin-bottom:24px;">Built for freelancers, agencies, and growing businesses, Duzgo Suites unifies subscription billing, double-entry bookkeeping, expense categorization, and branded invoice generation into one streamlined workspace.</p>
-        <ul class="checklist">
-          <li>✔ <strong>Automated Bookkeeping:</strong> Real-time profit &amp; loss statements, balance sheets, and multi-currency ledger tracking.</li>
-          <li>✔ <strong>Smart Invoicing &amp; Subscriptions:</strong> One-click recurring invoices, payment reminders, and tax-ready PDF exports.</li>
-          <li>✔ <strong>Connected Ecosystem:</strong> Works alongside Duzgo Utility Tools Hub for instant PDF, spreadsheet, and tax calculations.</li>
-        </ul>
-        <div class="detail-actions">
-          <a href="https://suites.duzgosoft.com" class="btn">Open Duzgo Suites Portal ↗</a>
-          <button type="button" class="btn outline" onclick="showView('home')">← Back to Home</button>
-        </div>
+        <form onsubmit="submitSupport(event)">
+          <div class="field">
+            <label for="product">Select Product or Topic</label>
+            <select id="product" required>
+              <option value="General / All Duzgo Soft Products">General / All Duzgo Soft Products</option>
+              <option value="Duzgo Utility Tools Hub">Duzgo Utility Tools Hub</option>
+              <option value="Duzgo Suites Accounting">Duzgo Suites Accounting</option>
+              <option value="Billing, Subscriptions & Refunds">Billing, Subscriptions &amp; Account Support</option>
+              <option value="Custom Software / Feature Request">Custom Software or Feature Request</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email">Your Email Address</label>
+            <input type="email" id="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Describe your question, feedback, or software requirement..." required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Support Request →</button>
+          <div id="support-notice" class="notice"></div>
+        </form>
       </div>
     </section>
   </main>
+
   <footer>
     <div class="container foot-row">
       <span>© 2026 Duzgo Soft — A project of Duzgo OÜ (Estonia). All rights reserved.</span>
       <span>Free &amp; Paid Software Tailored to Customer Needs</span>
     </div>
   </footer>
-
   <script>
+    (function () {
+      var t = "https" + "://" + "tools." + "duzgosoft.com";
+      var s = "https" + "://" + "suites." + "duzgosoft.com";
+      ["link-nav-tools", "link-card-tools"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.href = t;
+      });
+      ["link-nav-suites", "link-card-suites"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.href = s;
+      });
+    })();
     function showView(name) {
-      document.querySelectorAll('.view').forEach(function (el) { el.classList.remove('active'); });
-      document.querySelectorAll('.nav-btn').forEach(function (el) { el.classList.remove('active'); });
-      var target = document.getElementById('view-' + name) || document.getElementById('view-home');
-      target.classList.add('active');
-      var nav = document.getElementById('nav-' + name);
-      if (nav) nav.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (history.replaceState) {
-        history.replaceState(null, '', name === 'home' ? '/' : '#' + name);
-      }
+      document.querySelectorAll(".view").forEach(function (el) { el.classList.remove("active"); });
+      document.querySelectorAll(".nav-btn").forEach(function (el) { el.classList.remove("active"); });
+      var target = document.getElementById("view-" + name) || document.getElementById("view-home");
+      target.classList.add("active");
+      var nav = document.getElementById("nav-" + name);
+      if (nav) nav.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (history.replaceState) history.replaceState(null, "", name === "home" ? "/" : "#" + name);
     }
-    window.addEventListener('DOMContentLoaded', function () {
-      var hash = window.location.hash.replace('#', '');
-      if (hash === 'tools' || hash === 'suites') showView(hash);
+    function submitSupport(e) {
+      e.preventDefault();
+      var product = document.getElementById("product").value;
+      var email = document.getElementById("email").value;
+      var msg = document.getElementById("message").value;
+      var subject = encodeURIComponent("[Duzgo Soft Support] " + product);
+      var body = encodeURIComponent("Product/Topic: " + product + "\nFrom: " + email + "\n\n" + msg);
+      var notice = document.getElementById("support-notice");
+      notice.style.display = "block";
+      notice.textContent = "Opening your email client to send your request to support@duzgosoft.com...";
+      window.location.href = "mailto:support" + "@" + "://duzgosoft.com" + subject + "&body=" + body;
+    }
+    window.addEventListener("DOMContentLoaded", function () {
+      if (window.location.hash === "#support") showView("support");
     });
   </script>
 </body>
