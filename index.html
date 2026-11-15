@@ -1,148 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duzgo Soft — Durable, Privacy-First Software Infrastructure</title>
-    <meta name="description" content="Duzgo Soft builds high-performance, edge-native SaaS applications. Experience zero-retention data document tools, automated subscription accounting, and temporary mail architectures.">
-    <link rel="canonical" href="https://duzgosoft.com" />
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://duzgosoft.com">
-    <meta property="og:title" content="Duzgo Soft — Durable, Privacy-First Software Infrastructure">
-    <meta property="og:description" content="Explore the Duzgo Soft application registry. Client-side utility hubs, financial accounting systems, and secure edge microservices built for modern workflows.">
-    <style>
-        :root { --brand-dark: #0f172a; --brand-surface: #1e293b; --brand-accent: #3b82f6; --brand-text: #f8fafc; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--brand-dark); color: var(--brand-text); font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
-        header { border-bottom: 1px solid #1e293b; background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; }
-        .nav-container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; height: 4rem; display: flex; align-items: center; justify-content: space-between; }
-        .logo-box { display: flex; align-items: center; gap: 0.75rem; }
-        .logo-icon { height: 2rem; width: 2rem; border-radius: 0.5rem; background-color: var(--brand-accent); display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 0.875rem; }
-        .logo-text { font-size: 1.25rem; font-weight: 700; color: #fff; }
-        nav { display: flex; gap: 1.5rem; font-size: 0.875rem; font-weight: 500; }
-        nav a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
-        nav a:hover { color: #fff; }
-        main { flex-grow: 1; max-width: 72rem; width: 100%; margin: 0 auto; padding: 5rem 1.5rem; }
-        .hero { text-align: center; max-width: 48rem; margin: 0 auto 5rem; }
-        .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; background-color: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); margin-bottom: 1.5rem; }
-        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1.5rem; color: #fff; line-height: 1.1; }
-        @media (min-width: 640px) { h1 { font-size: 3.75rem; } }
-        .gradient-text { background: linear-gradient(to right, #3b82f6, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { font-size: 1.125rem; color: #94a3b8; line-height: 1.625; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 6rem; }
-        @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
-        .card { border-radius: 1rem; background-color: var(--brand-surface); border: 1px solid #334155; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        .card:hover { border-color: #475569; }
-        .card-disabled { background-color: rgba(30, 41, 59, 0.5); border-color: #1e293b; opacity: 0.85; }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-        .status-online { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #34d399; background-color: rgba(52, 211, 153, 0.1); padding: 0.25rem 0.625rem; border-radius: 0.25rem; }
-        .status-standby { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #60a5fa; background-color: rgba(96, 165, 250, 0.1); padding: 0.25rem 0.625rem; border-radius: 0.25rem; }
-        .card-count { font-size: 0.75rem; color: #64748b; }
-        h3 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
-        .card-desc { color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 1.5rem; }
-        .features { list-style: none; margin-bottom: 2rem; font-size: 0.75rem; color: #94a3b8; display: flex; flex-direction: column; gap: 0.5rem; }
-        .btn { width: 100%; text-align: center; display: block; background-color: var(--brand-accent); color: #fff; font-weight: 500; font-size: 0.875rem; padding: 0.75rem 1rem; border-radius: 0.75rem; text-decoration: none; transition: background-color 0.2s; }
-        .btn:hover { background-color: #2563eb; }
-        .btn-disabled { background-color: #1e293b; color: #64748b; cursor: not-allowed; border: none; }
-        .philosophy-section { border-top: 1px solid rgba(51, 65, 85, 0.6); padding-top: 4rem; }
-        .philosophy-box { background: linear-gradient(to bottom, #0f172a, #1e293b); border-radius: 1rem; border: 1px solid rgba(51, 65, 85, 0.8); padding: 2rem; text-align: center; }
-        @media (min-width: 640px) { .philosophy-box { padding: 3rem; } }
-        .p-title { font-size: 1.875rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-        .p-desc { color: #94a3b8; max-width: 42rem; margin: 0 auto 3rem; font-size: 0.875rem; }
-        @media (min-width: 640px) { .p-desc { font-size: 1rem; } }
-        .p-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-        @media (min-width: 640px) { .p-grid { grid-template-columns: repeat(3, 1fr); } }
-        .p-card { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; }
-        .p-circle { height: 2.5rem; width: 2.5rem; border-radius: 9999px; background-color: rgba(59, 130, 246, 0.1); color: var(--brand-accent); font-weight: bold; display: flex; align-items: center; justify-content: center; }
-        .p-item-title { font-size: 1rem; font-weight: 600; color: #fff; }
-        .p-item-desc { font-size: 0.75rem; color: #94a3b8; line-height: 1.625; }
-        footer { border-top: 1px solid #1e293b; background-color: var(--brand-dark); color: #64748b; font-size: 0.75rem; padding: 2rem 0; margin-top: auto; }
-        .footer-container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem; }
-        @media (min-width: 640px) { .footer-container { flex-direction: row; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duzgo Soft — Encrypted, Zero-Retention Software &amp; Business Suites</title>
+  <meta name="description" content="Duzgo Soft builds encrypted, zero-retention web utilities and business software suites including Duzgo Utility Tools Hub and Duzgo Suites." />
+  <link rel="canonical" href="https://duzgosoft.com" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "@id": "https://duzgosoft.com#organization", "name": "Duzgo Soft", "url": "https://duzgosoft.com", "sameAs": ["https://tools.duzgosoft.com/", "https://suites.duzgosoft.com/"] },
+      { "@type": "SoftwareApplication", "name": "Duzgo Utility Tools Hub", "url": "https://duzgosoft.com", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+      { "@type": "SoftwareApplication", "name": "Duzgo Suites", "url": "https://duzgosoft.com", "applicationCategory": "BusinessApplication", "operatingSystem": "Web" }
+    ]
+  }
+  </script>
+  <style>
+    :root { --bg: #070b14; --card: #0f172a; --border: #1e293b; --text: #f8fafc; --muted: #94a3b8; --accent: #3b82f6; --accent-hover: #2563eb; --green: #10b981; --amber: #f59e0b; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    header { border-bottom: 1px solid var(--border); padding: 18px 0; background: rgba(7, 11, 20, 0.9); position: sticky; top: 0; z-index: 10; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; background: none; border: none; color: var(--text); font-weight: 700; font-size: 1.15rem; cursor: pointer; text-decoration: none; }
+    .brand-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); display: grid; place-items: center; font-weight: 800; color: #fff; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-btn { background: none; border: none; color: var(--muted); font-size: 0.92rem; font-weight: 500; cursor: pointer; text-decoration: none; }
+    .nav-btn:hover, .nav-btn.active { color: var(--text); }
+    .view { display: none; padding: 64px 0 80px; }
+    .view.active { display: block; }
+    .hero { text-align: center; margin-bottom: 52px; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; margin-bottom: 20px; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+    .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s, transform 0.2s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.78rem; font-weight: 600; }
+    .live { color: var(--green); }
+    .soon { color: var(--amber); }
+    .tag { color: var(--muted); background: rgba(148, 163, 184, 0.1); padding: 3px 10px; border-radius: 999px; }
+    .card h2 { font-size: 1.35rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 0.94rem; margin-bottom: 18px; }
+    .checklist { list-style: none; margin-bottom: 24px; display: grid; gap: 8px; font-size: 0.9rem; color: #cbd5e1; }
+    .btn { display: inline-block; width: 100%; text-align: center; background: var(--accent); color: #fff; border: none; text-decoration: none; font-weight: 600; padding: 12px 18px; border-radius: 10px; font-size: 0.94rem; cursor: pointer; }
+    .btn:hover { background: var(--accent-hover); }
+    .btn.outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn.outline:hover { border-color: var(--muted); }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-bottom: 28px; }
+    .back-btn:hover { border-color: var(--accent); }
+    .detail-box { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
+    .detail-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .detail-actions .btn { width: auto; padding: 12px 24px; }
+    footer { border-top: 1px solid var(--border); padding: 26px 0; color: var(--muted); font-size: 0.86rem; }
+    .foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo-box">
-                <div class="logo-icon">D</div>
-                <span class="logo-text">Duzgo Soft</span>
-            </div>
-            <nav>
-                <a href="#ecosystem">Product Ecosystem</a>
-                <a href="#philosophy">Core Philosophy</a>
-            </nav>
+  <header>
+    <div class="container nav">
+      <button type="button" class="brand" onclick="showView('home')" aria-label="Duzgo Soft Home">
+        <span class="brand-icon">D</span> Duzgo Soft
+      </button>
+      <nav class="nav-links">
+        <button type="button" id="nav-home" class="nav-btn active" onclick="showView('home')">Product Ecosystem</button>
+        <button type="button" id="nav-tools" class="nav-btn" onclick="showView('tools')">Utility Tools Hub</button>
+        <button type="button" id="nav-suites" class="nav-btn" onclick="showView('suites')">Duzgo Suites</button>
+        <a href="https://tools.duzgosoft.com/support" class="nav-btn">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view active">
+      <div class="hero">
+        <div class="pill">⚡ Encrypted &amp; Zero-Retention Software Ecosystem</div>
+        <h1>Durable, Privacy-First Software Frameworks</h1>
+        <p class="subtitle">Duzgo Soft builds fast, reliable web utilities and business software suites engineered with strict data isolation, encrypted processing, and zero file retention.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div>
+            <div class="badge-row"><span class="live">● Online &amp; Live</span><span class="tag">74+ Active Tools</span></div>
+            <h2>Duzgo Utility Tools Hub</h2>
+            <p>All-in-one workspace for PDF editing, OCR, image conversion, developer formatters, SEO schema builders, and disposable email—with zero file retention.</p>
+            <ul class="checklist">
+              <li>✔ PDF editors, Bates numbering, OCR &amp; merge/split tools</li>
+              <li>✔ Developer workbench, regex &amp; JSON-LD schema generators</li>
+              <li>✔ Batch image, audio &amp; spreadsheet conversion suites</li>
+            </ul>
+          </div>
+          <button type="button" class="btn" onclick="showView('tools')">View Software Details →</button>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="badge-row"><span class="soon">● Business SaaS</span><span class="tag">Accounting &amp; Billing</span></div>
+            <h2>Duzgo Suites Accounting</h2>
+            <p>Automated cloud accounting, double-entry bookkeeping, and recurring invoice software built to track subscription balances and financial ledgers effortlessly.</p>
+            <ul class="checklist">
+              <li>⏳ Automated continuous ledger &amp; tax tracking</li>
+              <li>⏳ Professional invoice &amp; recurring billing workflows</li>
+              <li>⏳ Real-time financial reporting &amp; audit exports</li>
+            </ul>
+          </div>
+          <button type="button" class="btn outline" onclick="showView('suites')">View Software Details →</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- DEDICATED PAGE 1: DUZGO UTILITY TOOLS HUB -->
+    <section id="view-tools" class="view">
+      <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+      <div class="detail-box">
+        <div class="badge-row"><span class="live">● Online &amp; Live at ://duzgosoft.com</span><span class="tag">74+ Free Tools</span></div>
+        <h1 style="font-size:2.1rem;margin-bottom:14px;">Duzgo Utility Tools Hub</h1>
+        <p style="color:var(--muted);max-width:740px;margin-bottom:24px;">A unified productivity workspace offering 74+ specialized tools across PDF manipulation, OCR, image &amp; media conversion, developer utilities, SEO/GEO schema generation, and 10-minute disposable email—with encrypted, zero-retention handling.</p>
+        <ul class="checklist">
+          <li>✔ <strong>PDF Power Suite:</strong> Merge, split, compress, OCR, electronic signatures, Bates numbering, grayscale ink-saver, and metadata stripper.</li>
+          <li>✔ <strong>Developer &amp; SEO Suite:</strong> JSON/YAML/JWT workbench, regex tester, SQL formatter, Google SERP previewer, and JSON-LD schema generator.</li>
+          <li>✔ <strong>Media, Security &amp; Edge Utilities:</strong> Batch image/HEIC converter, barcode scanner, URL shortener, and instant disposable inbox.</li>
+        </ul>
+        <div class="detail-actions">
+          <a href="https://://duzgosoft.com" class="btn">Launch Live Utility Tools Hub ↗</a>
+          <button type="button" class="btn outline" onclick="showView('home')">← Back to Home</button>
         </div>
-    </header>
-    <main>
-        <section class="hero">
-            <div class="badge"><span>⚡ Built for Cloudflare Edge Infrastructure</span></div>
-            <h1>Durable, Privacy-First <br><span class="gradient-text">Software Frameworks</span></h1>
-            <p class="hero-desc">Duzgo Soft constructs cloud-native software layers engineered with a singular blueprint: complete client-side data data isolation, zero remote retention overhead, and blindingly fast execution speeds.</p>
-        </section>
-        <section id="ecosystem" class="grid">
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="status-online">Online & Live</span>
-                        <span class="card-count">74+ Active Modules</span>
-                    </div>
-                    <h3>Duzgo Utility Tools Hub</h3>
-                    <p class="card-desc">A decentralized client-side utility suite. Process complex PDF manipulation actions, optical character recognition (OCR), dynamic image compilation, developer formatting structures, and asset optimization vectors entirely within local browser RAM. No metrics are uploaded to external network matrices.</p>
-                    <ul class="features">
-                        <li>✔ High-performance web-assembly PDF editors</li>
-                        <li>✔ Developer cryptographic workbench & schema pipelines</li>
-                        <li>✔ Localized media batch-conversion engine layers</li>
-                    </ul>
-                </div>
-                <a href="https://duzgosoft.com" target="_blank" rel="noopener" class="btn">Launch Application Workspace →</a>
-            </div>
-            <div class="card card-disabled">
-                <div>
-                    <div class="card-header">
-                        <span class="status-standby">System Standby</span>
-                        <span class="card-count">Subdomain Reserved</span>
-                    </div>
-                    <h3 style="color: #cbd5e1;">Duzgo Suites Subscription Accounting</h3>
-                    <p class="card-desc" style="color: #64748b;">An automated institutional bookkeeping and corporate invoicing framework designed to track operational subscription balances, invoice transaction records, and corporate ledger positions securely at the edge network interface.</p>
-                    <ul class="features" style="color: #64748b;">
-                        <li>⏳ Automated continuous ledger calculations</li>
-                        <li>⏳ Secure programmatic invoice compilation</li>
-                        <li>⏳ Compliant billing tracking architectures</li>
-                    </ul>
-                </div>
-                <button disabled class="btn btn-disabled">Awaiting Subsystem Initialization</button>
-            </div>
-        </section>
-        <section id="philosophy" class="philosophy-section">
-            <div class="philosophy-box">
-                <h2 class="p-title">Core Technical Architecture</h2>
-                <p class="p-desc">Every utility layer and software platform created under the Duzgo Soft registry adheres to strict non-compromise computational mandates.</p>
-                <div class="p-grid">
-                    <div class="p-card">
-                        <div class="p-circle">1</div>
-                        <h4 class="p-item-title">Client-Side Sovereignty</h4>
-                        <p class="p-item-desc">Files and data models remain securely isolated in consumer browser runtime instances. Your raw assets never intersect external infrastructure discs.</p>
-                    </div>
-                    <div class="p-card">
-                        <div class="p-circle">2</div>
-                        <div class="p-item-title">Cloudflare Global Edge</div>
-                        <p class="p-item-desc">Applications execute immediately within a 50ms latency perimeter of 95% of global internet consumers via decentralized deployment zones.</p>
-                    </div>
-                    <div class="p-card">
-                        <div class="p-circle">3</div>
-                        <h4 class="p-item-title">Zero Persistence Overhead</h4>
-                        <p class="p-item-desc">No tracking analytics cookies, no permanent user profile profiling trackers, and zero telemetry collection operations.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-container">
-            <div>&copy; 2026 Duzgo Soft, Inc. All cryptographic rights reserved.</div>
-            <div><span>Infrastructure: Cloudflare Pages & D1 Edge Engines</span></div>
+      </div>
+    </section>
+
+    <!-- DEDICATED PAGE 2: DUZGO SUITES -->
+    <section id="view-suites" class="view">
+      <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+      <div class="detail-box">
+        <div class="badge-row"><span class="soon">● Subdomain: ://duzgosoft.com</span><span class="tag">Subscription Accounting SaaS</span></div>
+        <h1 style="font-size:2.1rem;margin-bottom:14px;">Duzgo Suites — Accounting, Bookkeeping &amp; Invoicing</h1>
+        <p style="color:var(--muted);max-width:740px;margin-bottom:24px;">Built for freelancers, agencies, and growing businesses, Duzgo Suites unifies subscription billing, double-entry bookkeeping, expense categorization, and branded invoice generation into one streamlined workspace.</p>
+        <ul class="checklist">
+          <li>✔ <strong>Automated Bookkeeping:</strong> Real-time profit &amp; loss statements, balance sheets, and multi-currency ledger tracking.</li>
+          <li>✔ <strong>Smart Invoicing &amp; Subscriptions:</strong> One-click recurring invoices, payment reminders, and tax-ready PDF exports.</li>
+          <li>✔ <strong>Connected Ecosystem:</strong> Works alongside Duzgo Utility Tools Hub for instant PDF, spreadsheet, and tax calculations.</li>
+        </ul>
+        <div class="detail-actions">
+          <a href="https://://duzgosoft.com" class="btn">Open Duzgo Suites Portal ↗</a>
+          <button type="button" class="btn outline" onclick="showView('home')">← Back to Home</button>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container foot-row">
+      <span>© 2026 Duzgo Soft. All rights reserved.</span>
+      <span>Encrypted, Secure &amp; Private Software</span>
+    </div>
+  </footer>
+
+  <script>
+    function showView(name) {
+      document.querySelectorAll('.view').forEach(function (el) { el.classList.remove('active'); });
+      document.querySelectorAll('.nav-btn').forEach(function (el) { el.classList.remove('active'); });
+      var target = document.getElementById('view-' + name) || document.getElementById('view-home');
+      target.classList.add('active');
+      var nav = document.getElementById('nav-' + name);
+      if (nav) nav.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (history.replaceState) {
+        history.replaceState(null, '', name === 'home' ? '/' : '#' + name);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', function () {
+      var hash = window.location.hash.replace('#', '');
+      if (hash === 'tools' || hash === 'suites') showView(hash);
+    });
+  </script>
 </body>
 </html>
