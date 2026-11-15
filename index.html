@@ -250,7 +250,7 @@
       var email = cleanInput(document.getElementById("sup-email").value).toLowerCase();
       var product = cleanInput(document.getElementById("sup-product").value);
       var msg = cleanInput(document.getElementById("sup-message").value);
-      if (!name || !isValidEmail(email) || msg.length < 5) {
+      if (!name || !isValidEmail(email) || msg.length < 2) {
         box.style.display = "block";
         box.innerHTML = "<strong style='color:#b91c1c;'>Please enter a valid email address and message before submitting.</strong>";
         return;
