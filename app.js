@@ -55,5 +55,5 @@ function submitSupport(e) {
 }
 window.addEventListener("DOMContentLoaded", function () {
   var h = window.location.hash.replace("#", "");
-  if (["support", "about", "privacy", "terms", "policies"].indexOf(h) !== -1) showView(h);
+  if (["suites", "support", "about", "privacy", "terms", "policies"].indexOf(h) !== -1) showView(h);
 });

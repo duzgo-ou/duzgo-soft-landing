@@ -63,7 +63,7 @@
       <nav class="nav-links">
         <button type="button" class="nav-btn" onclick="showView('home')">Home</button>
         <a id="link-nav-tools" href="#" class="nav-btn">Utility Tools Hub</a>
-        <a id="link-nav-suites" href="#support" onclick="showView('support');document.getElementById('sup-product').value='Duzgo Suites Accounting';return false;" class="nav-btn">Duzgo Suites</a>
+        <a id="link-nav-suites" href="#suites" onclick="showView('suites');return false;" class="nav-btn">Duzgo Suites</a>
         <button type="button" class="nav-btn" onclick="showView('about')">About Us</button>
         <button type="button" class="nav-btn" onclick="showView('support')">Support</button>
       </nav>
@@ -104,11 +104,38 @@
               <li>✔ Real-time financial reporting &amp; audit exports</li>
             </ul>
           </div>
-          <a id="link-card-suites" href="#support" onclick="showView('support');document.getElementById('sup-product').value='Duzgo Suites Accounting';return false;" class="btn">Join Duzgo Suites Early Access →</a>
+          <a id="link-card-suites" href="#suites" onclick="showView('suites');return false;" class="btn">Explore Duzgo Suites →</a>
         </article>
       </div>
     </section>
-    <section id="view-support" class="view">
+    
+  <section id="view-suites" class="view">
+    <div style="max-width:860px;margin:48px auto;padding:0 20px;">
+      <a href="/" onclick="showView('home');return false;" style="display:inline-block;background:#065f46;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin-bottom:24px;">← Back to Duzgo Soft Home</a>
+      <div style="background:#ffffff;border:1px solid #d1fae5;border-radius:16px;padding:36px;box-shadow:0 4px 20px rgba(6,95,70,0.06);">
+        <span style="display:inline-block;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:14px;">● In Active Development — Launching Soon</span>
+        <h1 style="margin:0 0 12px;font-size:32px;color:#064e3b;">Duzgo Suites Accounting</h1>
+        <p style="font-size:16px;color:#374151;line-height:1.65;margin:0 0 24px;">Automated cloud accounting, double-entry bookkeeping, and recurring invoice management built for freelancers, SaaS founders, and growing European businesses.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px;">
+          <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
+            <strong style="display:block;color:#065f46;margin-bottom:6px;">Automated Double-Entry Ledger</strong>
+            <span style="font-size:14px;color:#4b5563;">Continuous balance tracking, multi-currency entries, and instant trial balance snapshots.</span>
+          </div>
+          <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
+            <strong style="display:block;color:#065f46;margin-bottom:6px;">Recurring Billing & Invoices</strong>
+            <span style="font-size:14px;color:#4b5563;">EU VAT-compliant invoicing, automated payment schedules, and client statement exports.</span>
+          </div>
+          <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
+            <strong style="display:block;color:#065f46;margin-bottom:6px;">Audit-Ready Financial Reports</strong>
+            <span style="font-size:14px;color:#4b5563;">Real-time Profit & Loss, cash flow summaries, and one-click CSV/PDF accountant exports.</span>
+          </div>
+        </div>
+        <a href="#support" onclick="showView('support');document.getElementById('sup-product').value='Duzgo Suites Accounting';return false;" style="display:inline-block;background:#065f46;color:#ffffff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;">Request Early Access →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-support" class="view">
       <div class="page-box">
         <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
         <h1 style="font-size:2rem;margin-bottom:8px;">Duzgo Soft Support Center</h1>
