@@ -264,7 +264,17 @@
       fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ _subject: "[" + ticketId + "] " + product, _replyto: email, ticket_id: ticketId, name: name, email: email, product: product, message: msg })
+        body: JSON.stringify({
+          _subject: "[" + ticketId + "] Duzgo Soft Support — " + product,
+          _replyto: email,
+          _template: "table",
+          _captcha: "false",
+          "Ticket ID": ticketId,
+          "Customer Name": name,
+          "Customer Email": email,
+          "Product / Category": product,
+          "Support Message": msg
+        })
       }).catch(function () { return null; }).finally(function () {
         btn.disabled = false;
         btn.textContent = "Submit Support Ticket →";
