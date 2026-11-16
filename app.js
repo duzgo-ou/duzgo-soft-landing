@@ -89,22 +89,38 @@ window.addEventListener("DOMContentLoaded", function () {
 var p = window.location.pathname.replace(/^\/+|\/+$/g, ""); var h = VIEW_META[p] ? p : window.location.hash.replace("#", "");
 if (VIEW_META[h]) showView(h);
 });
+
 (function() {
-  var policyPaths = ["/privacy", "/terms", "/policies"];
-  function syncPolicyCards() {
+  function syncFaqView() {
     var p = window.location.pathname;
     if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
-    var isPolicy = policyPaths.indexOf(p) !== -1;
-    document.querySelectorAll("[data-hide-on-policy]").forEach(function(el) {
-      el.style.display = isPolicy ? "none" : "";
+    var isFaq = (p === "/faq");
+    document.querySelectorAll("[data-only-faq]").forEach(function(el) {
+      el.style.display = isFaq ? "" : "none";
     });
+    if (isFaq) {
+      document.title = "FAQ & Popular Free Browser Tools — Duzgo Soft (Duzgo OÜ)";
+      var meta = document.querySelector("meta[name=description]");
+      if (meta) meta.setAttribute("content", "Frequently asked questions about Duzgo Soft, Duzgo OÜ (Estonia), local-first PDF and developer tools, and cloud accounting.");
+      var canon = document.querySelector("link[rel=canonical]");
+      if (canon) canon.setAttribute("href", "https://duzgosoft.com");
+    }
   }
+  document.addEventListener("click", function(e) {
+    var link = e.target.closest("a[href=\"/faq\"]");
+    if (link) {
+      e.preventDefault();
+      history.pushState({}, "", "/faq");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      syncFaqView();
+    }
+  });
   var origPush = history.pushState;
   history.pushState = function() {
     origPush.apply(this, arguments);
-    syncPolicyCards();
+    syncFaqView();
   };
-  window.addEventListener("popstate", syncPolicyCards);
-  document.addEventListener("DOMContentLoaded", syncPolicyCards);
-  syncPolicyCards();
+  window.addEventListener("popstate", syncFaqView);
+  document.addEventListener("DOMContentLoaded", syncFaqView);
+  syncFaqView();
 })();
