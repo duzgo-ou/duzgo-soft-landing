@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://duzgosoft.com/sitemap.xml
+Sitemap: https://tools.duzgosoft.com/sitemap.xml

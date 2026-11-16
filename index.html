@@ -1,249 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Duzgo Soft — Software Built Around Your Needs</title>
-  <meta name="description" content="Welcome to Duzgo Soft, a project of Duzgo OÜ (Estonia). We develop practical web utilities and full-featured business software tailored to everyday workflows." />
-  <style>
-    :root { --bg: #ffffff; --card: #f8fafc; --border: #e2e8f0; --text: #0f172a; --muted: #334155; --green: #065f46; --green-hover: #047857; --green-soft: #ecfdf5; --amber: #b45309; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
-    main { flex: 1; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    header { border-bottom: 1px solid var(--border); padding: 16px 0; background: #ffffff; position: sticky; top: 0; z-index: 10; }
-    .nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; background: none; border: none; color: var(--text); font-weight: 800; font-size: 1.2rem; cursor: pointer; }
-    .brand-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--green); display: grid; place-items: center; font-weight: 800; color: #ffffff; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-    .nav-btn { background: var(--green); color: #ffffff; border: 2px solid var(--green); padding: 8px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
-    .nav-btn:hover, .nav-btn.active { background: var(--green-hover); border-color: var(--green-hover); }
-    .view { display: none; padding: 48px 0 72px; }
-    .view.active { display: block; }
-    .welcome-banner { background: var(--green); color: #ffffff; text-align: center; padding: 14px 20px; border-radius: 12px; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 32px; }
-    .hero { text-align: center; margin-bottom: 48px; }
-    h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; color: var(--text); }
-    .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; }
-    .card:hover { border-color: var(--green); }
-    .badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.78rem; font-weight: 700; }
-    .live { color: var(--green); }
-    .soon { color: var(--amber); }
-    .tag { color: var(--muted); background: #e2e8f0; padding: 3px 10px; border-radius: 999px; }
-    .card h2 { font-size: 1.35rem; margin-bottom: 10px; color: var(--text); }
-    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
-    .checklist { list-style: none; margin-bottom: 24px; display: grid; gap: 8px; font-size: 0.92rem; color: var(--text); }
-    .btn { display: inline-block; width: 100%; text-align: center; background: var(--green); color: #ffffff; border: none; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; }
-    .btn:hover { background: var(--green-hover); }
-    .btn-sm { width: auto; padding: 8px 14px; font-size: 0.85rem; margin-top: 10px; margin-right: 8px; }
-    .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #ffffff; border: none; padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-bottom: 24px; }
-    .page-box { max-width: 780px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
-    .page-box h2 { font-size: 1.2rem; margin: 22px 0 8px; color: var(--text); }
-    .page-box p, .page-box li { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
-    .page-box ul { padding-left: 20px; margin-bottom: 14px; }
-    .field { margin-bottom: 16px; }
-    .field label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
-    .field input, .field select, .field textarea { width: 100%; padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; background: #ffffff; color: var(--text); font-family: inherit; }
-    .ticket-card { display: none; margin-top: 18px; padding: 18px; border-radius: 12px; background: var(--green-soft); border: 1px solid #6ee7b7; color: var(--text); }
-    footer { background: var(--green); color: #ffffff; padding: 32px 0; font-size: 0.9rem; margin-top: auto; }
-    .foot-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
-    .foot-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .foot-link { background: none; border: none; color: #ffffff; font-weight: 700; font-size: 0.9rem; cursor: pointer; text-decoration: underline; }
-  </style>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
-  <link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMwNjVmNDYiLz48cGF0aCBkPSJNMTggMTRoMTRjMTEuMDQ2IDAgMjAgOC45NTQgMjAgMjBzLTguOTU0IDIwLTIwIDIwSDE4VjM4aDZ2MTBoOGM3LjczMiAwIDE0LTYuMjY4IDE0LTE0cy02LjI2OC0xNC0xNC0xNGgtOHY4aC02VjE0eiIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIGQ9Ik0zNiAyNy41YzAtMS45MzMtMS43OS0zLjUtNC0zLjVzLTQgMS41NjctNCAzLjVjMCAxLjY1IDEuMyAyLjg1IDMuNiAzLjM1bDEuNi4zNWM0LjEuOSA2LjggMy4yIDYuOCA2LjggMCA0LjQxOC0zLjgwNiA4LTguNSA4UzIzIDQyLjQxOCAyMyAzOGg1YzAgMS45MzMgMS43OSAzLjUgNCAzLjVzNC0xLjU2NyA0LTMuNWMwLTEuNjUtMS4zLTIuODUtMy42LTMuMzVsLTEuNi0uMzVDMjYuNyAzMy40IDI0IDMxLjEgMjQgMjcuNWMwLTQuNDE4IDMuODA2LTggOC41LThzOC41IDMuNTgyIDguNSA4aC01eiIgZmlsbD0iIzEwYjk4MSIvPjwvc3ZnPg==" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Duzgo Soft — Free Browser PDF &amp; Developer Tools &amp; Cloud Accounting (Duzgo OÜ)</title>
+<meta name="description" content="Duzgo Soft by Duzgo OÜ (Estonia) builds 74+ free privacy-first browser PDF, OCR, image, and developer tools plus Duzgo Suites automated double-entry cloud accounting." />
+<meta name="keywords" content="Duzgo Soft, Duzgo OÜ, free online PDF editor, local browser PDF merge split compress, offline OCR tool, developer JSON JWT workbench, disposable temp email, cloud accounting software EU VAT" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://duzgosoft.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Duzgo Soft" />
+<meta property="og:title" content="Duzgo Soft — Privacy-First Browser Utilities &amp; Cloud Accounting" />
+<meta property="og:description" content="74+ free client-side PDF, OCR, image, and developer utilities plus Duzgo Suites automated double-entry accounting by Duzgo OÜ." />
+<meta property="og:url" content="https://duzgosoft.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Duzgo Soft — Free Browser PDF &amp; Dev Utilities &amp; Cloud Accounting" />
+<meta name="twitter:description" content="Process PDFs, OCR, images, and code 100% locally in your browser with zero server uploads. Built by Duzgo OÜ (Estonia)." />
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "Organization",
+"@id": "https://duzgosoft.com",
+"name": "Duzgo Soft",
+"legalName": "Duzgo OÜ",
+"url": "https://duzgosoft.com/",
+"foundingLocation": { "@type": "Place", "name": "Estonia, European Union" },
+"contactPoint": {
+"@type": "ContactPoint",
+"contactType": "customer support",
+"email": "support@duzgosoft.com",
+"url": "https://duzgosoft.com"
+}
+},
+{
+"@type": "WebSite",
+"@id": "https://duzgosoft.com",
+"url": "https://duzgosoft.com/",
+"name": "Duzgo Soft",
+"publisher": { "@id": "https://duzgosoft.com" },
+"inLanguage": "en"
+},
+{
+"@type": "SoftwareApplication",
+"name": "Duzgo Utility Tools Hub",
+"url": "https://tools.duzgosoft.com/",
+"applicationCategory": "UtilitiesApplication",
+"operatingSystem": "Web Browser",
+"offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+"publisher": { "@id": "https://duzgosoft.com" },
+"description": "74+ free browser-based PDF editing, OCR, image conversion, developer formatting, SEO schema, and disposable email utilities."
+},
+{
+"@type": "SoftwareApplication",
+"name": "Duzgo Suites Accounting",
+"url": "https://duzgosoft.com",
+"applicationCategory": "BusinessApplication",
+"operatingSystem": "Web Browser",
+"publisher": { "@id": "https://duzgosoft.com" },
+"description": "Automated cloud accounting, double-entry bookkeeping, and EU VAT-compliant recurring invoice software."
+},
+{
+"@type": "FAQPage",
+"mainEntity": [
+{
+"@type": "Question",
+"name": "Are Duzgo Utility Tools free and private?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Yes. Duzgo Utility Tools Hub provides 74+ browser-based PDF, OCR, image, and developer tools that process files locally in your browser without permanent server storage."
+}
+},
+{
+"@type": "Question",
+"name": "Who operates Duzgo Soft?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Duzgo Soft is operated by Duzgo OÜ, a technology company registered in the Republic of Estonia, European Union."
+}
+}
+]
+}
+]
+}
+</script>
+<meta name="description" content="Welcome to Duzgo Soft, a project of Duzgo OÜ (Estonia). We develop practical web utilities and full-featured business software tailored to everyday workflows." />
+<style>
+:root { --bg: #ffffff; --card: #f8fafc; --border: #e2e8f0; --text: #0f172a; --muted: #334155; --green: #065f46; --green-hover: #047857; --green-soft: #ecfdf5; --amber: #b45309; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+header { border-bottom: 1px solid var(--border); padding: 16px 0; background: #ffffff; position: sticky; top: 0; z-index: 10; }
+.nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; background: none; border: none; color: var(--text); font-weight: 800; font-size: 1.2rem; cursor: pointer; }
+.brand-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--green); display: grid; place-items: center; font-weight: 800; color: #ffffff; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.nav-btn { background: var(--green); color: #ffffff; border: 2px solid var(--green); padding: 8px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
+.nav-btn:hover, .nav-btn.active { background: var(--green-hover); border-color: var(--green-hover); }
+.view { display: none; padding: 48px 0 72px; }
+.view.active { display: block; }
+.welcome-banner { background: var(--green); color: #ffffff; text-align: center; padding: 14px 20px; border-radius: 12px; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 32px; }
+.hero { text-align: center; margin-bottom: 48px; }
+h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; color: var(--text); }
+.subtitle { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; }
+.card:hover { border-color: var(--green); }
+.badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.78rem; font-weight: 700; }
+.live { color: var(--green); }
+.soon { color: var(--amber); }
+.tag { color: var(--muted); background: #e2e8f0; padding: 3px 10px; border-radius: 999px; }
+.card h2 { font-size: 1.35rem; margin-bottom: 10px; color: var(--text); }
+.card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
+.checklist { list-style: none; margin-bottom: 24px; display: grid; gap: 8px; font-size: 0.92rem; color: var(--text); }
+.btn { display: inline-block; width: 100%; text-align: center; background: var(--green); color: #ffffff; border: none; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; }
+.btn:hover { background: var(--green-hover); }
+.btn-sm { width: auto; padding: 8px 14px; font-size: 0.85rem; margin-top: 10px; margin-right: 8px; }
+.back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #ffffff; border: none; padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-bottom: 24px; }
+.page-box { max-width: 780px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
+.page-box h2 { font-size: 1.2rem; margin: 22px 0 8px; color: var(--text); }
+.page-box p, .page-box li { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
+.page-box ul { padding-left: 20px; margin-bottom: 14px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.field input, .field select, .field textarea { width: 100%; padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; background: #ffffff; color: var(--text); font-family: inherit; }
+.ticket-card { display: none; margin-top: 18px; padding: 18px; border-radius: 12px; background: var(--green-soft); border: 1px solid #6ee7b7; color: var(--text); }
+footer { background: var(--green); color: #ffffff; padding: 32px 0; font-size: 0.9rem; margin-top: auto; }
+.foot-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.foot-link { background: none; border: none; color: #ffffff; font-weight: 700; font-size: 0.9rem; cursor: pointer; text-decoration: underline; }
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+<link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IiMwNjVmNDYiLz48cGF0aCBkPSJNMTggMTRoMTRjMTEuMDQ2IDAgMjAgOC45NTQgMjAgMjBzLTguOTU0IDIwLTIwIDIwSDE4VjM4aDZ2MTBoOGM3LjczMiAwIDE0LTYuMjY4IDE0LTE0cy02LjI2OC0xNC0xNC0xNGgtOHY4aC02VjE0eiIgZmlsbD0iI2ZmZmZmZiIvPjxwYXRoIGQ9Ik0zNiAyNy41YzAtMS45MzMtMS43OS0zLjUtNC0zLjVzLTQgMS41NjctNCAzLjVjMCAxLjY1IDEuMyAyLjg1IDMuNiAzLjM1bDEuNi4zNWM0LjEuOSA2LjggMy4yIDYuOCA2LjggMCA0LjQxOC0zLjgwNiA4LTguNSA4UzIzIDQyLjQxOCAyMyAzOGg1YzAgMS45MzMgMS43OSAzLjUgNCAzLjVzNC0xLjU2NyA0LTMuNWMwLTEuNjUtMS4zLTIuODUtMy42LTMuMzVsLTEuNi0uMzVDMjYuNyAzMy40IDI0IDMxLjEgMjQgMjcuNWMwLTQuNDE4IDMuODA2LTggOC41LThzOC41IDMuNTgyIDguNSA4aC01eiIgZmlsbD0iIzEwYjk4MSIvPjwvc3ZnPg==" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <button type="button" class="brand" onclick="showView('home')">
-        <svg xmlns="http://w3.org" width="34" height="34" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="16" fill="#065f46"/><path d="M18 14h14c11.046 0 20 8.954 20 20s-8.954 20-20 20H18V38h6v10h8c7.732 0 14-6.268 14-14s-6.268-14-14-14h-8v8h-6V14z" fill="#ffffff"/><path d="M36 27.5c0-1.933-1.79-3.5-4-3.5s-4 1.567-4 3.5c0 1.65 1.3 2.85 3.6 3.35l1.6.35c4.1.9 6.8 3.2 6.8 6.8 0 4.418-3.806 8-8.5 8S23 42.418 23 38h5c0 1.933 1.79 3.5 4 3.5s4-1.567 4-3.5c0-1.65-1.3-2.85-3.6-3.35l-1.6-.35C26.7 33.4 24 31.1 24 27.5c0-4.418 3.806-8 8.5-8s8.5 3.582 8.5 8h-5z" fill="#10b981"/></svg> Duzgo Soft
-      </button>
-      <nav class="nav-links">
-        <button type="button" class="nav-btn" onclick="showView('home')">Home</button>
-        <a id="link-nav-tools" href="#" class="nav-btn">Utility Tools Hub</a>
-        <a id="link-nav-suites" href="#suites" onclick="showView('suites');return false;" class="nav-btn">Duzgo Suites</a>
-        <button type="button" class="nav-btn" onclick="showView('about')">About Us</button>
-        <button type="button" class="nav-btn" onclick="showView('support')">Support</button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section id="view-home" class="view active">
-      <div class="welcome-banner">Welcome to Duzgo Soft</div>
-      <div class="hero">
-        <h1>Software Built Around Your Needs</h1>
-        <p class="subtitle">Welcome to Duzgo Soft. We develop practical web utilities and full-featured business software tailored to everyday workflows and real customer needs.</p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div>
-            <div class="badge-row"><span class="live">● Online &amp; Live</span><span class="tag">74+ Tools</span></div>
-            <h2>Duzgo Utility Tools Hub</h2>
-            <p>All-in-one workspace for PDF editing, OCR, image conversion, developer formatters, SEO schema builders, and disposable email.</p>
-            <ul class="checklist">
-              <li>✔ PDF editors, Bates numbering, OCR &amp; merge/split tools</li>
-              <li>✔ Developer workbench, regex &amp; JSON-LD schema generators</li>
-              <li>✔ Batch image, audio &amp; spreadsheet conversion suites</li>
-            </ul>
-          </div>
-          <a id="link-card-tools" href="#" class="btn">Launch Utility Tools Hub →</a>
-        </article>
-
-        <article class="card">
-          <div>
-            <div class="badge-row"><span class="soon">● Business SaaS</span><span class="tag">Accounting &amp; Billing</span></div>
-            <h2>Duzgo Suites Accounting</h2>
-            <p>Automated cloud accounting, double-entry bookkeeping, and recurring invoice software built to track subscription balances and financial ledgers effortlessly.</p>
-            <ul class="checklist">
-              <li>✔ Automated continuous ledger &amp; tax tracking</li>
-              <li>✔ Professional invoice &amp; recurring billing workflows</li>
-              <li>✔ Real-time financial reporting &amp; audit exports</li>
-            </ul>
-          </div>
-          <a id="link-card-suites" href="#suites" onclick="showView('suites');return false;" class="btn">Explore Duzgo Suites →</a>
-        </article>
-      </div>
-    </section>
-    
-  <section id="view-suites" class="view">
-    <div style="max-width:860px;margin:48px auto;padding:0 20px;">
-      <a href="/" onclick="showView('home');return false;" style="display:inline-block;background:#065f46;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin-bottom:24px;">← Back to Duzgo Soft Home</a>
-      <div style="background:#ffffff;border:1px solid #d1fae5;border-radius:16px;padding:36px;box-shadow:0 4px 20px rgba(6,95,70,0.06);">
-        <span style="display:inline-block;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:14px;">● In Active Development — Launching Soon</span>
-        <h1 style="margin:0 0 12px;font-size:32px;color:#064e3b;">Duzgo Suites Accounting</h1>
-        <p style="font-size:16px;color:#374151;line-height:1.65;margin:0 0 24px;">Automated cloud accounting, double-entry bookkeeping, and recurring invoice management built for freelancers, SaaS founders, and growing European businesses.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px;">
-          <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
-            <strong style="display:block;color:#065f46;margin-bottom:6px;">Automated Double-Entry Ledger</strong>
-            <span style="font-size:14px;color:#4b5563;">Continuous balance tracking, multi-currency entries, and instant trial balance snapshots.</span>
-          </div>
-          <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
-            <strong style="display:block;color:#065f46;margin-bottom:6px;">Recurring Billing & Invoices</strong>
-            <span style="font-size:14px;color:#4b5563;">EU VAT-compliant invoicing, automated payment schedules, and client statement exports.</span>
-          </div>
-          <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
-            <strong style="display:block;color:#065f46;margin-bottom:6px;">Audit-Ready Financial Reports</strong>
-            <span style="font-size:14px;color:#4b5563;">Real-time Profit & Loss, cash flow summaries, and one-click CSV/PDF accountant exports.</span>
-          </div>
-        </div>
-        <a href="#support" onclick="showView('support');document.getElementById('sup-product').value='Duzgo Suites Accounting';return false;" style="display:inline-block;background:#065f46;color:#ffffff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;">Request Early Access →</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="view-support" class="view">
-      <div class="page-box">
-        <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-        <h1 style="font-size:2rem;margin-bottom:8px;">Duzgo Soft Support Center</h1>
-        <p>Submit a support ticket for any Duzgo Soft product, subscription, billing question, or custom software inquiry.</p>
-
-        <form id="support-form" onsubmit="submitSupport(event)"><input type="text" id="sup-trap" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-          <div class="field">
-            <label for="sup-name">Your Name</label>
-            <input type="text" id="sup-name" placeholder="Full Name" required />
-          </div>
-          <div class="field">
-            <label for="sup-email">Your Email Address <span style="color:#b91c1c;font-weight:600;font-size:0.82rem;">(Required — valid email needed for ticket reply)</span></label>
-            <input type="email" id="sup-email" placeholder="you@company.com" required />
-          </div>
-          <div class="field">
-            <label for="sup-product">Select Product or Topic</label>
-            <select id="sup-product" required>
-              <option value="General / All Duzgo Soft Products">General / All Duzgo Soft Products</option>
-              <option value="Duzgo Utility Tools Hub">Duzgo Utility Tools Hub</option>
-              <option value="Duzgo Suites Accounting">Duzgo Suites Accounting</option>
-              <option value="Billing & Subscriptions">Billing, Subscriptions &amp; Account Support</option>
-              <option value="Custom Software / Feature Request">Custom Software or Feature Request</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="sup-message">Ticket Details</label>
-            <textarea id="sup-message" rows="5" placeholder="Describe your question, issue, or software request..." required></textarea>
-          </div>
-          <button type="submit" id="sup-btn" class="btn">Submit Support Ticket →</button>
-        </form>
-        <div id="ticket-result" class="ticket-card"></div>
-      </div>
-    </section>
-
-    <section id="view-about" class="view">
-      <div class="page-box">
-        <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-        <h1 style="font-size:2rem;margin-bottom:12px;">About Duzgo Soft</h1>
-        <p><strong>Duzgo Soft</strong> is a software development brand and project operated by <strong>Duzgo OÜ</strong>, an Estonian-registered technology company focused on building reliable, practical web applications tailored to customer needs.</p>
-        <h2>What We Build</h2>
-        <ul>
-          <li><strong>Duzgo Utility Tools Hub:</strong> A comprehensive suite of 74+ browser-based document, PDF, image, developer, and SEO utilities designed for everyday speed.</li>
-          <li><strong>Duzgo Suites Accounting:</strong> Cloud accounting, double-entry bookkeeping, and recurring invoicing software built for freelancers and growing businesses.</li>
-          <li><strong>Tailored Software Solutions:</strong> Purpose-built web utilities and business workflows shaped directly by user feedback.</li>
-        </ul>
-        <h2>Company Information</h2>
-        <p><strong>Legal Entity:</strong> Duzgo OÜ (Republic of Estonia, European Union)<br /><strong>Support Contact:</strong> support@duzgosoft.com</p>
-      </div>
-    </section>
-    <section id="view-privacy" class="view">
-      <div class="page-box">
-        <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-        <h1 style="font-size:2rem;margin-bottom:12px;">Privacy Policy</h1>
-        <p><strong>Effective Date:</strong> January 1, 2026 · <strong>Data Controller:</strong> Duzgo OÜ (Estonia)</p>
-        <h2>1. Scope &amp; Principles</h2>
-        <p>Duzgo OÜ respects your privacy and complies with the European Union General Data Protection Regulation (GDPR). This policy applies across Duzgo Soft websites and software products.</p>
-        <h2>2. Data We Collect</h2>
-        <ul>
-          <li><strong>Utility Tools:</strong> Files processed in our browser-based utility tools are handled transiently and are not permanently stored or sold.</li>
-          <li><strong>Account &amp; SaaS Data:</strong> For subscription products such as Duzgo Suites, we process account registration details, billing records, and business ledger data strictly to provide the service.</li>
-          <li><strong>Support Tickets:</strong> Information submitted through our Support Center is used solely to respond to and resolve your inquiry.</li>
-        </ul>
-        <h2>3. Your GDPR Rights</h2>
-        <p>You have the right to access, correct, export, or request deletion of your personal data at any time by contacting <strong>support@duzgosoft.com</strong>.</p>
-      </div>
-    </section>
-
-    <section id="view-terms" class="view">
-      <div class="page-box">
-        <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-        <h1 style="font-size:2rem;margin-bottom:12px;">Terms &amp; Conditions</h1>
-        <p><strong>Effective Date:</strong> January 1, 2026 · <strong>Operator:</strong> Duzgo OÜ (Estonia)</p>
-        <h2>1. Acceptance of Terms</h2>
-        <p>By accessing or using Duzgo Soft websites, utilities, or SaaS applications, you agree to be bound by these Terms &amp; Conditions.</p>
-        <h2>2. Permitted Use</h2>
-        <p>You may use Duzgo Soft services for lawful personal or commercial purposes. You must not attempt to disrupt infrastructure, reverse-engineer proprietary components, or upload unlawful content.</p>
-        <h2>3. Subscriptions &amp; Intellectual Property</h2>
-        <p>All software, branding, and interfaces remain the intellectual property of Duzgo OÜ. Paid subscription plans are billed according to the selected billing cycle.</p>
-        <h2>4. Governing Law</h2>
-        <p>These terms are governed by the laws of the Republic of Estonia and applicable European Union regulations.</p>
-      </div>
-    </section>
-
-    <section id="view-policies" class="view">
-      <div class="page-box">
-        <button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
-        <h1 style="font-size:2rem;margin-bottom:12px;">Refund &amp; Cookie Policy</h1>
-        <p><strong>Effective Date:</strong> January 1, 2026 · <strong>Operator:</strong> Duzgo OÜ (Estonia)</p>
-        <h2>1. Refund Policy</h2>
-        <p>Subscriptions may be canceled at any time before the next renewal date. If you experience a verified technical issue or duplicate charge, contact <strong>support@duzgosoft.com</strong> within 14 days for a full review and refund.</p>
-        <h2>2. Cookie Policy</h2>
-        <p>Duzgo Soft uses essential functional storage and security cookies required for session authentication, theme preferences, and edge load balancing. We do not sell behavioral advertising profiles.</p>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container foot-grid">
-      <div>© 2026 Duzgo Soft — A project of Duzgo OÜ (Estonia). All rights reserved.</div>
-      <div class="foot-links">
-        <button type="button" class="foot-link" onclick="showView('about')">About Us</button>
-        <button type="button" class="foot-link" onclick="showView('privacy')">Privacy Policy</button>
-        <button type="button" class="foot-link" onclick="showView('terms')">Terms &amp; Conditions</button>
-        <button type="button" class="foot-link" onclick="showView('policies')">Refund &amp; Cookie Policy</button>
-        <button type="button" class="foot-link" onclick="showView('support')">Support</button>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/app.js?v=1"></script>
+<header>
+<div class="container nav">
+<button type="button" class="brand" onclick="showView('home')">
+<svg xmlns="http://w3.org" width="34" height="34" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="16" fill="#065f46"/><path d="M18 14h14c11.046 0 20 8.954 20 20s-8.954 20-20 20H18V38h6v10h8c7.732 0 14-6.268 14-14s-6.268-14-14-14h-8v8h-6V14z" fill="#ffffff"/><path d="M36 27.5c0-1.933-1.79-3.5-4-3.5s-4 1.567-4 3.5c0 1.65 1.3 2.85 3.6 3.35l1.6.35c4.1.9 6.8 3.2 6.8 6.8 0 4.418-3.806 8-8.5 8S23 42.418 23 38h5c0 1.933 1.79 3.5 4 3.5s4-1.567 4-3.5c0-1.65-1.3-2.85-3.6-3.35l-1.6-.35C26.7 33.4 24 31.1 24 27.5c0-4.418 3.806-8 8.5-8s8.5 3.582 8.5 8h-5z" fill="#10b981"/></svg> Duzgo Soft
+</button>
+<nav class="nav-links">
+<button type="button" class="nav-btn" onclick="showView('home')">Home</button>
+<a id="link-nav-tools" href="#" class="nav-btn">Utility Tools Hub</a>
+<a id="link-nav-suites" href="#suites" onclick="showView('suites');return false;" class="nav-btn">Duzgo Suites</a>
+<button type="button" class="nav-btn" onclick="showView('about')">About Us</button>
+<button type="button" class="nav-btn" onclick="showView('support')">Support</button>
+</nav>
+</div>
+</header>
+<main class="container">
+<section id="view-home" class="view active">
+<div class="welcome-banner">Welcome to Duzgo Soft</div>
+<div class="hero">
+<h1>Privacy-First Browser PDF &amp; Developer Utilities and Cloud Accounting</h1>
+<p class="subtitle">Welcome to Duzgo Soft. We develop practical web utilities and full-featured business software tailored to everyday workflows and real customer needs.</p>
+</div>
+<div class="grid">
+<article class="card">
+<div>
+<div class="badge-row"><span class="live">● Online &amp; Live</span><span class="tag">74+ Tools</span></div>
+<h2>Duzgo Utility Tools Hub</h2>
+<p>All-in-one workspace for PDF editing, OCR, image conversion, developer formatters, SEO schema builders, and disposable email.</p>
+<ul class="checklist">
+<li>✔ PDF editors, Bates numbering, OCR &amp; merge/split tools</li>
+<li>✔ Developer workbench, regex &amp; JSON-LD schema generators</li>
+<li>✔ Batch image, audio &amp; spreadsheet conversion suites</li>
+</ul>
+</div>
+<a id="link-card-tools" href="#" class="btn">Launch Utility Tools Hub →</a>
+</article>
+<article class="card">
+<div>
+<div class="badge-row"><span class="soon">● Business SaaS</span><span class="tag">Accounting &amp; Billing</span></div>
+<h2>Duzgo Suites Accounting</h2>
+<p>Automated cloud accounting, double-entry bookkeeping, and recurring invoice software built to track subscription balances and financial ledgers effortlessly.</p>
+<ul class="checklist">
+<li>✔ Automated continuous ledger &amp; tax tracking</li>
+<li>✔ Professional invoice &amp; recurring billing workflows</li>
+<li>✔ Real-time financial reporting &amp; audit exports</li>
+</ul>
+</div>
+<a id="link-card-suites" href="#suites" onclick="showView('suites');return false;" class="btn">Explore Duzgo Suites →</a>
+</article>
+</div>
+</section>
+<section id="view-suites" class="view">
+<div style="max-width:860px;margin:48px auto;padding:0 20px;">
+<a href="/" onclick="showView('home');return false;" style="display:inline-block;background:#065f46;color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin-bottom:24px;">← Back to Duzgo Soft Home</a>
+<div style="background:#ffffff;border:1px solid #d1fae5;border-radius:16px;padding:36px;box-shadow:0 4px 20px rgba(6,95,70,0.06);">
+<span style="display:inline-block;background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:14px;">● In Active Development — Launching Soon</span>
+<h2 style="margin:0 0 12px;font-size:32px;color:#064e3b;">Duzgo Suites Accounting</h2>
+<p style="font-size:16px;color:#374151;line-height:1.65;margin:0 0 24px;">Automated cloud accounting, double-entry bookkeeping, and recurring invoice management built for freelancers, SaaS founders, and growing European businesses.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px;">
+<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
+<strong style="display:block;color:#065f46;margin-bottom:6px;">Automated Double-Entry Ledger</strong>
+<span style="font-size:14px;color:#4b5563;">Continuous balance tracking, multi-currency entries, and instant trial balance snapshots.</span>
+</div>
+<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
+<strong style="display:block;color:#065f46;margin-bottom:6px;">Recurring Billing & Invoices</strong>
+<span style="font-size:14px;color:#4b5563;">EU VAT-compliant invoicing, automated payment schedules, and client statement exports.</span>
+</div>
+<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:18px;">
+<strong style="display:block;color:#065f46;margin-bottom:6px;">Audit-Ready Financial Reports</strong>
+<span style="font-size:14px;color:#4b5563;">Real-time Profit & Loss, cash flow summaries, and one-click CSV/PDF accountant exports.</span>
+</div>
+</div>
+<a href="#support" onclick="showView('support');document.getElementById('sup-product').value='Duzgo Suites Accounting';return false;" style="display:inline-block;background:#065f46;color:#ffffff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;">Request Early Access →</a>
+</div>
+</div>
+</section>
+<section id="view-support" class="view">
+<div class="page-box">
+<button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+<h2 style="font-size:2rem;margin-bottom:8px;">Duzgo Soft Support Center</h2>
+<p>Submit a support ticket for any Duzgo Soft product, subscription, billing question, or custom software inquiry.</p>
+<form id="support-form" onsubmit="submitSupport(event)"><input type="text" id="sup-trap" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+<div class="field">
+<label for="sup-name">Your Name</label>
+<input type="text" id="sup-name" placeholder="Full Name" required />
+</div>
+<div class="field">
+<label for="sup-email">Your Email Address <span style="color:#b91c1c;font-weight:600;font-size:0.82rem;">(Required — valid email needed for ticket reply)</span></label>
+<input type="email" id="sup-email" placeholder="you@company.com" required />
+</div>
+<div class="field">
+<label for="sup-product">Select Product or Topic</label>
+<select id="sup-product" required>
+<option value="General / All Duzgo Soft Products">General / All Duzgo Soft Products</option>
+<option value="Duzgo Utility Tools Hub">Duzgo Utility Tools Hub</option>
+<option value="Duzgo Suites Accounting">Duzgo Suites Accounting</option>
+<option value="Billing & Subscriptions">Billing, Subscriptions &amp; Account Support</option>
+<option value="Custom Software / Feature Request">Custom Software or Feature Request</option>
+</select>
+</div>
+<div class="field">
+<label for="sup-message">Ticket Details</label>
+<textarea id="sup-message" rows="5" placeholder="Describe your question, issue, or software request..." required></textarea>
+</div>
+<button type="submit" id="sup-btn" class="btn">Submit Support Ticket →</button>
+</form>
+<div id="ticket-result" class="ticket-card"></div>
+</div>
+</section>
+<section id="view-about" class="view">
+<div class="page-box">
+<button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+<h2 style="font-size:2rem;margin-bottom:12px;">About Duzgo Soft</h2>
+<p><strong>Duzgo Soft</strong> is a software development brand and project operated by <strong>Duzgo OÜ</strong>, an Estonian-registered technology company focused on building reliable, practical web applications tailored to customer needs.</p>
+<h2>What We Build</h2>
+<ul>
+<li><strong>Duzgo Utility Tools Hub:</strong> A comprehensive suite of 74+ browser-based document, PDF, image, developer, and SEO utilities designed for everyday speed.</li>
+<li><strong>Duzgo Suites Accounting:</strong> Cloud accounting, double-entry bookkeeping, and recurring invoicing software built for freelancers and growing businesses.</li>
+<li><strong>Tailored Software Solutions:</strong> Purpose-built web utilities and business workflows shaped directly by user feedback.</li>
+</ul>
+<h2>Company Information</h2>
+<p><strong>Legal Entity:</strong> Duzgo OÜ (Republic of Estonia, European Union)<br /><strong>Support Contact:</strong> support@duzgosoft.com</p>
+</div>
+</section>
+<section id="view-privacy" class="view">
+<div class="page-box">
+<button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+<h2 style="font-size:2rem;margin-bottom:12px;">Privacy Policy</h2>
+<p><strong>Effective Date:</strong> January 1, 2026 · <strong>Data Controller:</strong> Duzgo OÜ (Estonia)</p>
+<h2>1. Scope &amp; Principles</h2>
+<p>Duzgo OÜ respects your privacy and complies with the European Union General Data Protection Regulation (GDPR). This policy applies across Duzgo Soft websites and software products.</p>
+<h2>2. Data We Collect</h2>
+<ul>
+<li><strong>Utility Tools:</strong> Files processed in our browser-based utility tools are handled transiently and are not permanently stored or sold.</li>
+<li><strong>Account &amp; SaaS Data:</strong> For subscription products such as Duzgo Suites, we process account registration details, billing records, and business ledger data strictly to provide the service.</li>
+<li><strong>Support Tickets:</strong> Information submitted through our Support Center is used solely to respond to and resolve your inquiry.</li>
+</ul>
+<h2>3. Your GDPR Rights</h2>
+<p>You have the right to access, correct, export, or request deletion of your personal data at any time by contacting <strong>support@duzgosoft.com</strong>.</p>
+</div>
+</section>
+<section id="view-terms" class="view">
+<div class="page-box">
+<button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+<h2 style="font-size:2rem;margin-bottom:12px;">Terms &amp; Conditions</h2>
+<p><strong>Effective Date:</strong> January 1, 2026 · <strong>Operator:</strong> Duzgo OÜ (Estonia)</p>
+<h2>1. Acceptance of Terms</h2>
+<p>By accessing or using Duzgo Soft websites, utilities, or SaaS applications, you agree to be bound by these Terms &amp; Conditions.</p>
+<h2>2. Permitted Use</h2>
+<p>You may use Duzgo Soft services for lawful personal or commercial purposes. You must not attempt to disrupt infrastructure, reverse-engineer proprietary components, or upload unlawful content.</p>
+<h2>3. Subscriptions &amp; Intellectual Property</h2>
+<p>All software, branding, and interfaces remain the intellectual property of Duzgo OÜ. Paid subscription plans are billed according to the selected billing cycle.</p>
+<h2>4. Governing Law</h2>
+<p>These terms are governed by the laws of the Republic of Estonia and applicable European Union regulations.</p>
+</div>
+</section>
+<section id="view-policies" class="view">
+<div class="page-box">
+<button type="button" class="back-btn" onclick="showView('home')">← Back to Duzgo Soft Home</button>
+<h2 style="font-size:2rem;margin-bottom:12px;">Refund &amp; Cookie Policy</h2>
+<p><strong>Effective Date:</strong> January 1, 2026 · <strong>Operator:</strong> Duzgo OÜ (Estonia)</p>
+<h2>1. Refund Policy</h2>
+<p>Subscriptions may be canceled at any time before the next renewal date. If you experience a verified technical issue or duplicate charge, contact <strong>support@duzgosoft.com</strong> within 14 days for a full review and refund.</p>
+<h2>2. Cookie Policy</h2>
+<p>Duzgo Soft uses essential functional storage and security cookies required for session authentication, theme preferences, and edge load balancing. We do not sell behavioral advertising profiles.</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="container foot-grid">
+<div>© 2026 Duzgo Soft — A project of Duzgo OÜ (Estonia). All rights reserved.</div>
+<div class="foot-links">
+<button type="button" class="foot-link" onclick="showView('about')">About Us</button>
+<button type="button" class="foot-link" onclick="showView('privacy')">Privacy Policy</button>
+<button type="button" class="foot-link" onclick="showView('terms')">Terms &amp; Conditions</button>
+<button type="button" class="foot-link" onclick="showView('policies')">Refund &amp; Cookie Policy</button>
+<button type="button" class="foot-link" onclick="showView('support')">Support</button>
+</div>
+</div>
+</footer>
+<script src="/app.js?v=2"></script>
 </body>
 </html>
