@@ -260,21 +260,11 @@
       var ticketId = "DZG-" + Math.floor(100000 + Math.random() * 900000);
       btn.disabled = true;
       btn.textContent = "Submitting Ticket...";
-      var endpoint = "https" + "://" + "formsubmit.co/ajax/support" + "@" + "duzgosoft.com";
-      fetch(endpoint, {
+      fetch("/api/support", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          _subject: "[" + ticketId + "] Duzgo Soft Support — " + product,
-          _replyto: email,
-          _template: "table",
-          _captcha: "false",
-          "Ticket ID": ticketId,
-          "Customer Name": name,
-          "Customer Email": email,
-          "Product / Category": product,
-          "Support Message": msg
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ticketId: ticketId, name: name, email: email, product: product, message: msg })
+      })
       }).catch(function () { return null; }).finally(function () {
         btn.disabled = false;
         btn.textContent = "Submit Support Ticket →";
