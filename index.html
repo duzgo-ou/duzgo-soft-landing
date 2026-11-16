@@ -260,7 +260,7 @@
       var ticketId = "DZG-" + Math.floor(100000 + Math.random() * 900000);
       btn.disabled = true;
       btn.textContent = "Submitting Ticket...";
-      fetch("https://workers.dev", {
+      fetch("https://duzgo-support-mailer.ecom-apps.workers.dev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ticketId: ticketId, name: name, email: email, product: product, message: msg })
