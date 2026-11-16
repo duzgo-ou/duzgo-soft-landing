@@ -89,3 +89,22 @@ window.addEventListener("DOMContentLoaded", function () {
 var p = window.location.pathname.replace(/^\/+|\/+$/g, ""); var h = VIEW_META[p] ? p : window.location.hash.replace("#", "");
 if (VIEW_META[h]) showView(h);
 });
+(function() {
+  var policyPaths = ["/privacy", "/terms", "/policies"];
+  function syncPolicyCards() {
+    var p = window.location.pathname;
+    if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+    var isPolicy = policyPaths.indexOf(p) !== -1;
+    document.querySelectorAll("[data-hide-on-policy]").forEach(function(el) {
+      el.style.display = isPolicy ? "none" : "";
+    });
+  }
+  var origPush = history.pushState;
+  history.pushState = function() {
+    origPush.apply(this, arguments);
+    syncPolicyCards();
+  };
+  window.addEventListener("popstate", syncPolicyCards);
+  document.addEventListener("DOMContentLoaded", syncPolicyCards);
+  syncPolicyCards();
+})();
