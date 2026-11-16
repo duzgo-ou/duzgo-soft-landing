@@ -217,66 +217,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var t = "https" + "://" + "tools." + "duzgosoft.com";
-      var s = "https" + "://" + "suites." + "duzgosoft.com";
-      ["link-nav-tools", "link-card-tools"].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.href = t;
-      });
-      ["link-nav-suites", "link-card-suites"].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.href = s;
-      });
-    })();
-    function showView(name) {
-      document.querySelectorAll(".view").forEach(function (el) { el.classList.remove("active"); });
-      var target = document.getElementById("view-" + name) || document.getElementById("view-home");
-      target.classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      if (history.replaceState) history.replaceState(null, "", name === "home" ? "/" : "#" + name);
-    }
-    function cleanInput(str) {
-      return str.replace(/<[^>]*>?/gm, "").replace(/[<>]/g, "").trim();
-    }
-    function isValidEmail(email) {
-      return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-    }
-    function submitSupport(e) {
-      e.preventDefault();
-      if (document.getElementById("sup-trap").value !== "") return;
-      var btn = document.getElementById("sup-btn");
-      var box = document.getElementById("ticket-result");
-      var name = cleanInput(document.getElementById("sup-name").value);
-      var email = cleanInput(document.getElementById("sup-email").value).toLowerCase();
-      var product = cleanInput(document.getElementById("sup-product").value);
-      var msg = cleanInput(document.getElementById("sup-message").value);
-      if (!name || !isValidEmail(email) || msg.length < 2) {
-        box.style.display = "block";
-        box.innerHTML = "<strong style='color:#b91c1c;'>Please enter a valid email address and message before submitting.</strong>";
-        return;
-      }
-      var ticketId = "DZG-" + Math.floor(100000 + Math.random() * 900000);
-      btn.disabled = true;
-      btn.textContent = "Submitting Ticket...";
-      fetch("https://duzgo-support-mailer.ecom-apps.workers.dev", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ticketId: ticketId, name: name, email: email, product: product, message: msg })
-      })
-      }).catch(function () { return null; }).finally(function () {
-        btn.disabled = false;
-        btn.textContent = "Submit Support Ticket →";
-        box.style.display = "block";
-        box.innerHTML = "<strong>✔ Ticket Number: " + ticketId + "</strong>";
-        document.getElementById("support-form").reset();
-      });
-    }
-    window.addEventListener("DOMContentLoaded", function () {
-      var h = window.location.hash.replace("#", "");
-      if (["support", "about", "privacy", "terms", "policies"].indexOf(h) !== -1) showView(h);
-    });
-  </script>
+  <script src="/app.js?v=1"></script>
 </body>
 </html>
