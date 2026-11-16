@@ -5,10 +5,7 @@
     var el = document.getElementById(id);
     if (el) el.href = t;
   });
-  ["link-nav-suites", "link-card-suites"].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.href = s;
-  });
+  
 })();
 function showView(name) {
   document.querySelectorAll(".view").forEach(function (el) { el.classList.remove("active"); });
