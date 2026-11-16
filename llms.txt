@@ -5,13 +5,13 @@
 ## Core Products
 
 - **Duzgo Utility Tools Hub** (https://tools.duzgosoft.com/): 74+ free client-side web tools for PDF editing, merging, splitting, compression, OCR, local AI background removal, batch image/audio conversion, developer JSON/JWT/YAML formatting, and disposable temporary email. All document processing runs locally in the user's browser without permanent server storage.
-- **Duzgo Suites Accounting** (https://duzgosoft.com): Automated cloud accounting, double-entry bookkeeping, EU VAT invoicing, and recurring billing software for freelancers and growing businesses.
+- **Duzgo Suites Accounting** (https://duzgosoft.com/suites): Automated cloud accounting, double-entry bookkeeping, EU VAT invoicing, and recurring billing software for freelancers and growing businesses.
 
 ## Key Pages & Support
 
 - Home: https://duzgosoft.com/
-- About Duzgo OÜ: https://duzgosoft.com
-- Support Center: https://duzgosoft.com (Email: support@duzgosoft.com)
-- GDPR Privacy Policy: https://duzgosoft.com
-- Terms & Conditions: https://duzgosoft.com
-- Refund & Cookie Policy: https://duzgosoft.com
+- About Duzgo OÜ: https://duzgosoft.com/about
+- Support Center: https://duzgosoft.com/support (Email: support@duzgosoft.com)
+- GDPR Privacy Policy: https://duzgosoft.com/privacy
+- Terms & Conditions: https://duzgosoft.com/terms
+- Refund & Cookie Policy: https://duzgosoft.com/policies
