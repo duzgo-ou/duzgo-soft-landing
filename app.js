@@ -44,7 +44,7 @@ document.title = VIEW_META[key].title;
 var metaDesc = document.querySelector("meta[name='description']");
 if (metaDesc) metaDesc.setAttribute("content", VIEW_META[key].desc);
 window.scrollTo({ top: 0, behavior: "smooth" });
-if (history.replaceState) history.replaceState(null, "", key === "home" ? "/" : "#" + key);
+if (history.pushState) history.pushState(null, "", key === "home" ? "/" : "/" + key); var canon = document.querySelector("link[rel='canonical']"); if (canon) canon.setAttribute("href", key === "home" ? "https://duzgosoft.com/" : "https://duzgosoft.com/" + key);
 }
 function cleanInput(str) {
 return String(str || "").replace(/<[^>]*>?/gm, "").replace(/[<>]/g, "").trim();
@@ -86,6 +86,6 @@ document.getElementById("support-form").reset();
 });
 }
 window.addEventListener("DOMContentLoaded", function () {
-var h = window.location.hash.replace("#", "");
+var p = window.location.pathname.replace(/^\/+|\/+$/g, ""); var h = VIEW_META[p] ? p : window.location.hash.replace("#", "");
 if (VIEW_META[h]) showView(h);
 });
