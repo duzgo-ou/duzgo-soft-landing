@@ -1,7 +1,7 @@
 <svg xmlns="http://w3.org" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="dzgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="0%" stop-color="#ef4444"/>
       <stop offset="40%" stop-color="#f472b6"/>
       <stop offset="75%" stop-color="#fb923c"/>
       <stop offset="100%" stop-color="#fbbf24"/>
