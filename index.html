@@ -87,7 +87,7 @@
 </script>
 <meta name="description" content="Welcome to Duzgo Soft, a project of Duzgo OÜ (Estonia). We develop practical web utilities and full-featured business software tailored to everyday workflows." />
 <style>
-:root { --bg: #ffffff; --card: #f8fafc; --border: #e2e8f0; --text: #0f172a; --muted: #334155; --green: #2563eb; --green-hover: #0284c7; --green-soft: #eff6ff; --amber: #b45309; }
+:root { --bg: #ffffff; --card: #f8fafc; --border: #e2e8f0; --text: #0f172a; --muted: #334155; --green: #2563eb; --green-hover: #0284c7; --green-soft: #e0f2fe; --amber: #b45309; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 main { flex: 1; }
@@ -95,13 +95,13 @@ main { flex: 1; }
 header { border-bottom: 1px solid var(--border); padding: 16px 0; background: #ffffff; position: sticky; top: 0; z-index: 10; }
 .nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; background: none; border: none; color: var(--text); font-weight: 800; font-size: 1.2rem; cursor: pointer; }
-.brand-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--green); display: grid; place-items: center; font-weight: 800; color: #ffffff; }
+.brand-icon { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%); display: grid; place-items: center; font-weight: 800; color: #ffffff; }
 .nav-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.nav-btn { background: var(--green); color: #ffffff; border: 2px solid var(--green); padding: 8px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
+.nav-btn { background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%); color: #ffffff; border: 2px solid var(--green); padding: 8px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
 .nav-btn:hover, .nav-btn.active { background: var(--green-hover); border-color: var(--green-hover); }
 .view { display: none; padding: 48px 0 72px; }
 .view.active { display: block; }
-.welcome-banner { background: var(--green); color: #ffffff; text-align: center; padding: 14px 20px; border-radius: 12px; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 32px; }
+.welcome-banner { background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%); color: #ffffff; text-align: center; padding: 14px 20px; border-radius: 12px; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 32px; }
 .hero { text-align: center; margin-bottom: 48px; }
 h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; color: var(--text); }
 .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin: 0 auto; }
@@ -115,10 +115,10 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 800; letter-spacing: -0
 .card h2 { font-size: 1.35rem; margin-bottom: 10px; color: var(--text); }
 .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
 .checklist { list-style: none; margin-bottom: 24px; display: grid; gap: 8px; font-size: 0.92rem; color: var(--text); }
-.btn { display: inline-block; width: 100%; text-align: center; background: var(--green); color: #ffffff; border: none; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; }
+.btn { display: inline-block; width: 100%; text-align: center; background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%); color: #ffffff; border: none; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; }
 .btn:hover { background: var(--green-hover); }
 .btn-sm { width: auto; padding: 8px 14px; font-size: 0.85rem; margin-top: 10px; margin-right: 8px; }
-.back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #ffffff; border: none; padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-bottom: 24px; }
+.back-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%); color: #ffffff; border: none; padding: 9px 16px; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-bottom: 24px; }
 .page-box { max-width: 780px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 36px; }
 .page-box h2 { font-size: 1.2rem; margin: 22px 0 8px; color: var(--text); }
 .page-box p, .page-box li { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
@@ -126,8 +126,8 @@ h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); font-weight: 800; letter-spacing: -0
 .field { margin-bottom: 16px; }
 .field label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
 .field input, .field select, .field textarea { width: 100%; padding: 11px 14px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; background: #ffffff; color: var(--text); font-family: inherit; }
-.ticket-card { display: none; margin-top: 18px; padding: 18px; border-radius: 12px; background: var(--green-soft); border: 1px solid #6ee7b7; color: var(--text); }
-footer { background: var(--green); color: #ffffff; padding: 32px 0; font-size: 0.9rem; margin-top: auto; }
+.ticket-card { display: none; margin-top: 18px; padding: 18px; border-radius: 12px; background: var(--green-soft); border: 1px solid #7dd3fc; color: var(--text); }
+footer { background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%); color: #ffffff; padding: 32px 0; font-size: 0.9rem; margin-top: auto; }
 .foot-grid { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 18px; }
 .foot-link { background: none; border: none; color: #ffffff; font-weight: 700; font-size: 0.9rem; cursor: pointer; text-decoration: underline; }
