@@ -26,7 +26,8 @@ desc: "Terms and Conditions governing the use of Duzgo Soft web utilities, SaaS 
 policies: {
 title: "Refund & Cookie Policy — Duzgo Soft (Duzgo OÜ)",
 desc: "Review Duzgo Soft subscription refund terms and essential functional cookie usage policies."
-}
+},
+  faq: { title: "FAQ & Popular Tools — Duzgo Soft (Duzgo OÜ)", desc: "Frequently asked questions about Duzgo Soft, Duzgo OÜ (Estonia), privacy-first PDF and developer tools, and cloud accounting.", path: "/faq" }
 };
 (function () {
 var t = "https://" + "tools." + "duzgosoft.com";
