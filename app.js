@@ -32,13 +32,16 @@ desc: "Review Duzgo Soft subscription refund terms and essential functional cook
 (function () {
 var t = "https://" + "tools." + "duzgosoft.com";
 ["link-nav-tools", "link-card-tools"].forEach(function (id) {
-var el = document.getElementById(id);
-if (el) el.href = t;
-});
+    var el = document.getElementById(id);
+    if (el) el.href = t;
+  });
+  var s = "https://" + "suites." + "duzgosoft.com";
+  ["link-nav-suites", "link-card-suites"].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.href = s;
+  });
 })();
-function showView(name) {
-  if (view === "suites") { window.location.replace("https://duzgosoft.com"); return; }
-  if (name === "suites") { window.location.replace("https://duzgosoft.com"); return; }
+function showView(name) {  if (name === "suites") { window.location.replace("https://suites.duzgosoft.com"); return; }
 var key = VIEW_META[name] ? name : "home";
 document.querySelectorAll(".view").forEach(function (el) { el.classList.remove("active"); });
 var target = document.getElementById("view-" + key) || document.getElementById("view-home");
