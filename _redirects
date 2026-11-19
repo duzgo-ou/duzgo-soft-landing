@@ -1,2 +1,2 @@
-/suites https://duzgosoft.com 301
-/suites/* https://duzgosoft.com/:splat 301
+/suites https://suites.duzgosoft.com 301
+/suites/* https://suites.duzgosoft.com/:splat 301
