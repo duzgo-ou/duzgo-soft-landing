@@ -37,6 +37,7 @@ if (el) el.href = t;
 });
 })();
 function showView(name) {
+  if (view === "suites") { window.location.replace("https://duzgosoft.com"); return; }
   if (name === "suites") { window.location.replace("https://duzgosoft.com"); return; }
 var key = VIEW_META[name] ? name : "home";
 document.querySelectorAll(".view").forEach(function (el) { el.classList.remove("active"); });
